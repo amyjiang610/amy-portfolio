@@ -152,6 +152,8 @@ function vitePluginManusDebugCollector(): Plugin {
 
 const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector()];
 
+
+
 export default defineConfig({
   plugins,
   resolve: {
@@ -184,5 +186,6 @@ export default defineConfig({
       strict: true,
       deny: ["**/.*"],
     },
+    hmr: undefined, // Use default HMR configuration
   },
 });
