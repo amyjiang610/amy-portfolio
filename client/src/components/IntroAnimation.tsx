@@ -3,7 +3,8 @@
  * Design: 超级马里奥复古街机风
  * - 3D CSS 旋转粉色笔记本
  * - 点击后打字机效果 "Welcome to Amy's World"
- * - 消失后显示主页面
+ * - 进度条加载动画
+ * - 圆形蒙版从小扩大的过渡效果
  */
 
 import { useEffect, useRef, useState } from "react";
@@ -13,12 +14,16 @@ interface IntroAnimationProps {
 }
 
 export default function IntroAnimation({ onComplete }: IntroAnimationProps) {
-  const [phase, setPhase] = useState<"notebook" | "typing" | "done">("notebook");
+  const [phase, setPhase] = useState<"notebook" | "typing" | "loading" | "done">("notebook");
   const [typedText, setTypedText] = useState("");
   const [showCursor, setShowCursor] = useState(true);
+  const [loadingProgress, setLoadingProgress] = useState(0);
+  const [maskRadius, setMaskRadius] = useState(0);
   const fullText = "Welcome to Amy's World";
   const typingRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const cursorRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const loadingRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const maskRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   // Cursor blink
   useEffect(() => {
@@ -41,11 +46,10 @@ export default function IntroAnimation({ onComplete }: IntroAnimationProps) {
         i++;
         typingRef.current = setTimeout(type, 80);
       } else {
-        // After typing done, wait then fade out
+        // After typing done, start loading
         typingRef.current = setTimeout(() => {
-          setPhase("done");
-          setTimeout(onComplete, 600);
-        }, 1200);
+          setPhase("loading");
+        }, 800);
       }
     };
     typingRef.current = setTimeout(type, 300);
@@ -53,6 +57,48 @@ export default function IntroAnimation({ onComplete }: IntroAnimationProps) {
       if (typingRef.current) clearTimeout(typingRef.current);
     };
   }, [phase]);
+
+  // Loading progress bar
+  useEffect(() => {
+    if (phase !== "loading") return;
+    setLoadingProgress(0);
+    setMaskRadius(0);
+    
+    // Progress bar animation (0-100% in 2 seconds)
+    loadingRef.current = setInterval(() => {
+      setLoadingProgress(prev => {
+        if (prev >= 100) {
+          if (loadingRef.current) clearInterval(loadingRef.current);
+          // Start circular mask expansion
+          startMaskExpansion();
+          return 100;
+        }
+        return prev + 5;
+      });
+    }, 100);
+
+    return () => {
+      if (loadingRef.current) clearInterval(loadingRef.current);
+    };
+  }, [phase]);
+
+  const startMaskExpansion = () => {
+    setMaskRadius(0);
+    maskRef.current = setInterval(() => {
+      setMaskRadius(prev => {
+        if (prev >= 150) {
+          if (maskRef.current) clearInterval(maskRef.current);
+          // Trigger done phase after mask expands
+          setTimeout(() => {
+            setPhase("done");
+            setTimeout(onComplete, 300);
+          }, 200);
+          return 150;
+        }
+        return prev + 5;
+      });
+    }, 30);
+  };
 
   const handleNotebookClick = () => {
     if (phase === "notebook") {
@@ -223,15 +269,71 @@ export default function IntroAnimation({ onComplete }: IntroAnimationProps) {
             {typedText}
             <span style={{ opacity: showCursor ? 1 : 0 }}>|</span>
           </div>
+        </div>
+      )}
+
+      {/* Loading phase with progress bar and circular mask */}
+      {phase === "loading" && (
+        <div style={{
+          textAlign: "center",
+          animation: "fadeInScale 0.5s ease-out",
+          position: "relative",
+          zIndex: 10,
+        }}>
           <div style={{
-            marginTop: "20px",
-            fontSize: "12px",
-            color: "#8B4513",
+            fontSize: "14px",
+            color: "#8B0000",
             fontFamily: "'Press Start 2P', monospace",
-            animation: "bounce 0.8s ease-in-out infinite",
+            marginBottom: "30px",
           }}>
-            ▼ Loading... ▼
+            Loading...
           </div>
+          
+          {/* Progress bar */}
+          <div style={{
+            width: "240px",
+            height: "16px",
+            background: "#FFF8F0",
+            border: "3px solid #000",
+            boxShadow: "4px 4px 0 #000",
+            overflow: "hidden",
+            position: "relative",
+          }}>
+            <div style={{
+              width: `${loadingProgress}%`,
+              height: "100%",
+              background: "linear-gradient(90deg, #FFD700, #FF8C00)",
+              transition: "width 0.1s linear",
+              boxShadow: "inset 0 0 8px rgba(0,0,0,0.2)",
+            }} />
+            <div style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              fontSize: "10px",
+              color: "#000",
+              fontWeight: "bold",
+              fontFamily: "'Press Start 2P', monospace",
+            }}>
+              {loadingProgress}%
+            </div>
+          </div>
+
+          {/* Circular mask expansion overlay */}
+          <div style={{
+            position: "fixed",
+            inset: 0,
+            background: "linear-gradient(135deg, #FFE4E1 0%, #FFDAB9 50%, #FFB6C1 100%)",
+            borderRadius: "50%",
+            width: `${maskRadius * 2}px`,
+            height: `${maskRadius * 2}px`,
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            zIndex: -1,
+            pointerEvents: "none",
+          }} />
         </div>
       )}
 
@@ -260,6 +362,10 @@ export default function IntroAnimation({ onComplete }: IntroAnimationProps) {
         @keyframes starTwinkle {
           0%, 100% { opacity: 0.3; transform: scale(0.8); }
           50% { opacity: 1; transform: scale(1.2); }
+        }
+        @keyframes progressPulse {
+          0%, 100% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7); }
+          50% { box-shadow: 0 0 0 8px rgba(255, 215, 0, 0); }
         }
       `}</style>
     </div>

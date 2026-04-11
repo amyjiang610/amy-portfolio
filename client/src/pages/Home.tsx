@@ -123,7 +123,7 @@ export default function Home() {
             </div>
 
             {/* Screen bezel */}
-            <div style={{
+            <div id="screen-container" style={{
               background: "#1a0a2e",
               margin: "12px",
               border: "4px solid #000",
@@ -297,6 +297,13 @@ export default function Home() {
                   ↑ 点击按钮探索 Amy 的世界 ↑
                 </div>
               </div>
+
+              {/* Content Cards - rendered inside screen */}
+              <PersonalityCard onClose={() => setActiveCard(null)} visible={activeCard === "personality"} />
+              <HobbiesCard onClose={() => setActiveCard(null)} visible={activeCard === "hobbies"} />
+              <ExperienceCard onClose={() => setActiveCard(null)} visible={activeCard === "experience"} />
+              <EducationCard onClose={() => setActiveCard(null)} visible={activeCard === "education"} />
+              <FuturePlanCard onClose={() => setActiveCard(null)} visible={activeCard === "future"} />
             </div>
 
             {/* Computer bottom / base */}
@@ -366,12 +373,7 @@ export default function Home() {
         </div>
       )}
 
-      {/* Content Cards */}
-      <PersonalityCard onClose={() => setActiveCard(null)} visible={activeCard === "personality"} />
-      <HobbiesCard onClose={() => setActiveCard(null)} visible={activeCard === "hobbies"} />
-      <ExperienceCard onClose={() => setActiveCard(null)} visible={activeCard === "experience"} />
-      <EducationCard onClose={() => setActiveCard(null)} visible={activeCard === "education"} />
-      <FuturePlanCard onClose={() => setActiveCard(null)} visible={activeCard === "future"} />
+
 
       <style>{`
         @keyframes mainFadeIn {

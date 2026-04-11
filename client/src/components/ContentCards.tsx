@@ -127,21 +127,11 @@ export function PersonalityCard({ onClose, visible }: CardProps) {
 // ========== 卡片2：爱好介绍 ==========
 export function HobbiesCard({ onClose, visible }: CardProps) {
   const hobbies = [
-    { id: 1, name: "舞蹈", emoji: "💃", desc: "Jazz / K-pop，用身体表达情绪", img: "https://picsum.photos/150/150?random=1" },
-    { id: 2, name: "旅行", emoji: "✈️", desc: "走过 30+ 城市，收集日落与故事", img: "https://picsum.photos/150/150?random=2" },
-    { id: 3, name: "摄影", emoji: "📷", desc: "喜欢拍人像与街角光影", img: "https://picsum.photos/150/150?random=3" },
-    { id: 4, name: "写作", emoji: "✍️", desc: "曾在校记者团发表多篇报道", img: "https://picsum.photos/150/150?random=4" },
+    { id: 1, name: "舞蹈", emoji: "💃", desc: "Jazz / K-pop，用身体表达情绪", img: "https://d2xsxph8kpxj0f.cloudfront.net/310519663538179270/gGNJUTGsMN9fxyxQUNEaYD/amy_hobby_1_250a9429.jpg" },
+    { id: 2, name: "旅行", emoji: "✈️", desc: "走过 30+ 城市，收集日落与故事", img: "https://d2xsxph8kpxj0f.cloudfront.net/310519663538179270/gGNJUTGsMN9fxyxQUNEaYD/amy_hobby_2_a2b1f719.jpg" },
+    { id: 3, name: "摄影", emoji: "📷", desc: "喜欢拍人像与街角光影", img: "https://d2xsxph8kpxj0f.cloudfront.net/310519663538179270/gGNJUTGsMN9fxyxQUNEaYD/amy_hobby_3_b30e4fff.jpg" },
+    { id: 4, name: "写作", emoji: "✍️", desc: "曾在校记者团发表多篇报道", img: "https://d2xsxph8kpxj0f.cloudfront.net/310519663538179270/gGNJUTGsMN9fxyxQUNEaYD/amy_hobby_4_078ea4f5.jpg" },
   ];
-  const [images, setImages] = useState<Record<number, string>>({});
-  const fileRefs = useRef<Record<number, HTMLInputElement | null>>({});
-
-  const handleFileChange = (id: number, e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const url = URL.createObjectURL(file);
-      setImages(prev => ({ ...prev, [id]: url }));
-    }
-  };
 
   return (
     <CardWrapper onClose={onClose} visible={visible} title="爱好介绍" color="#87CEEB">
@@ -173,7 +163,7 @@ export function HobbiesCard({ onClose, visible }: CardProps) {
               onMouseLeave={e => (e.currentTarget.style.transform = "scale(1)")}
             >
               <img
-                src={images[h.id] || h.img}
+                src={h.img}
                 alt={h.name}
                 style={{
                   width: "100%", height: "100%",
@@ -185,29 +175,7 @@ export function HobbiesCard({ onClose, visible }: CardProps) {
             <div style={{ fontSize: "8px", color: "#555", textAlign: "center", lineHeight: "1.6" }}>
               {h.desc}
             </div>
-            <button
-              onClick={() => fileRefs.current[h.id]?.click()}
-              style={{
-                background: "#FFD700",
-                border: "2px solid #000",
-                padding: "4px 8px",
-                fontSize: "8px",
-                cursor: "pointer",
-                boxShadow: "2px 2px 0 #000",
-                fontFamily: "'Press Start 2P', monospace",
-              }}
-              onMouseEnter={e => (e.currentTarget.style.transform = "scale(1.05)")}
-              onMouseLeave={e => (e.currentTarget.style.transform = "scale(1)")}
-            >
-              更换图片
-            </button>
-            <input
-              type="file"
-              accept="image/*"
-              style={{ display: "none" }}
-              ref={el => { fileRefs.current[h.id] = el; }}
-              onChange={e => handleFileChange(h.id, e)}
-            />
+
           </div>
         ))}
       </div>
@@ -575,17 +543,17 @@ function CardWrapper({ children, onClose, visible, title, color }: CardWrapperPr
   return (
     <div
       style={{
-        position: "fixed",
+        position: "absolute",
         top: "50%",
-        right: visible ? "16px" : "-420px",
-        transform: "translateY(-50%)",
-        width: "380px",
-        maxHeight: "85vh",
+        left: "50%",
+        transform: visible ? "translate(-50%, -50%) scaleX(1) scaleY(1)" : "translate(-50%, -50%) scaleX(0) scaleY(0)",
+        width: "360px",
+        maxHeight: "70vh",
         background: "#FFF8F0",
         border: "4px solid #000",
         boxShadow: "8px 8px 0 #000",
-        zIndex: 2000,
-        transition: "right 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)",
+        zIndex: 100,
+        transition: "transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)",
         display: "flex",
         flexDirection: "column",
         overflow: "hidden",
