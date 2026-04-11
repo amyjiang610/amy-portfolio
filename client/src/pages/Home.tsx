@@ -11,6 +11,7 @@
 import { useState, useCallback } from "react";
 import IntroAnimation from "@/components/IntroAnimation";
 import PixelWorldCanvas from "@/components/PixelWorldCanvas";
+import BGMPlayer from "@/components/BGMPlayer";
 import {
   PersonalityCard,
   HobbiesCard,
@@ -68,6 +69,9 @@ export default function Home() {
       position: "relative",
       background: "#1a0a2e",
     }}>
+      {/* BGM Player */}
+      <BGMPlayer />
+
       {/* Full-screen background pixel world */}
       <div style={{ position: "absolute", inset: 0 }}>
         <PixelWorldCanvas isScreen={false} />

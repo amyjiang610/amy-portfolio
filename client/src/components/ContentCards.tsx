@@ -127,10 +127,10 @@ export function PersonalityCard({ onClose, visible }: CardProps) {
 // ========== 卡片2：爱好介绍 ==========
 export function HobbiesCard({ onClose, visible }: CardProps) {
   const hobbies = [
-    { id: 1, name: "舞蹈", emoji: "💃", desc: "Jazz / K-pop，用身体表达情绪", img: "https://d2xsxph8kpxj0f.cloudfront.net/310519663538179270/gGNJUTGsMN9fxyxQUNEaYD/amy_hobby_1_250a9429.jpg" },
-    { id: 2, name: "旅行", emoji: "✈️", desc: "走过 30+ 城市，收集日落与故事", img: "https://d2xsxph8kpxj0f.cloudfront.net/310519663538179270/gGNJUTGsMN9fxyxQUNEaYD/amy_hobby_2_a2b1f719.jpg" },
-    { id: 3, name: "摄影", emoji: "📷", desc: "喜欢拍人像与街角光影", img: "https://d2xsxph8kpxj0f.cloudfront.net/310519663538179270/gGNJUTGsMN9fxyxQUNEaYD/amy_hobby_3_b30e4fff.jpg" },
-    { id: 4, name: "写作", emoji: "✍️", desc: "曾在校记者团发表多篇报道", img: "https://d2xsxph8kpxj0f.cloudfront.net/310519663538179270/gGNJUTGsMN9fxyxQUNEaYD/amy_hobby_4_078ea4f5.jpg" },
+    { id: 1, name: "舞蹈", emoji: "💃", desc: "Jazz / K-pop，用身体表达情绪", img: "https://d2xsxph8kpxj0f.cloudfront.net/310519663538179270/gGNJUTGsMN9fxyxQUNEaYD/amy_hobby_4_078ea4f5.jpg" },
+    { id: 2, name: "旅行", emoji: "✈️", desc: "走过 30+ 城市，收集日落与故事", img: "https://d2xsxph8kpxj0f.cloudfront.net/310519663538179270/gGNJUTGsMN9fxyxQUNEaYD/amy_hobby_3_b30e4fff.jpg" },
+    { id: 3, name: "摄影", emoji: "📷", desc: "喜欢拍人像与街角光影", img: "https://d2xsxph8kpxj0f.cloudfront.net/310519663538179270/gGNJUTGsMN9fxyxQUNEaYD/amy_hobby_2_a2b1f719.jpg" },
+    { id: 4, name: "写作", emoji: "✍️", desc: "曾在校记者团发表多篇报道", img: "https://d2xsxph8kpxj0f.cloudfront.net/310519663538179270/gGNJUTGsMN9fxyxQUNEaYD/amy_hobby_1_250a9429.jpg" },
   ];
 
   return (
