@@ -138,26 +138,30 @@ export function HobbiesCard({ onClose, visible }: CardProps) {
       <div style={{
         display: "grid",
         gridTemplateColumns: "1fr 1fr",
-        gap: "12px",
+        gap: "20px",
+        height: "100%",
       }}>
         {hobbies.map(h => (
           <div key={h.id} style={{
             background: "#FFF8F0",
-            border: "3px solid #000",
-            padding: "10px",
+            border: "4px solid #000",
+            padding: "16px",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            gap: "8px",
+            justifyContent: "center",
+            gap: "12px",
+            boxShadow: "4px 4px 0 #000",
           }}>
-            <div style={{ fontSize: "16px" }}>{h.emoji}</div>
-            <div style={{ fontSize: "10px", color: "#8B0000", fontWeight: "bold" }}>{h.name}</div>
+            <div style={{ fontSize: "24px" }}>{h.emoji}</div>
+            <div style={{ fontSize: "12px", color: "#8B0000", fontWeight: "bold", fontFamily: "'Press Start 2P', monospace" }}>{h.name}</div>
             <div style={{
-              width: "120px", height: "120px",
+              width: "140px", height: "140px",
               border: "4px solid #000",
               overflow: "hidden",
               cursor: "pointer",
               transition: "transform 0.2s",
+              boxShadow: "3px 3px 0 #000",
             }}
               onMouseEnter={e => (e.currentTarget.style.transform = "scale(1.05)")}
               onMouseLeave={e => (e.currentTarget.style.transform = "scale(1)")}
@@ -172,10 +176,9 @@ export function HobbiesCard({ onClose, visible }: CardProps) {
                 }}
               />
             </div>
-            <div style={{ fontSize: "8px", color: "#555", textAlign: "center", lineHeight: "1.6" }}>
+            <div style={{ fontSize: "10px", color: "#555", textAlign: "center", lineHeight: "1.6" }}>
               {h.desc}
             </div>
-
           </div>
         ))}
       </div>
@@ -540,20 +543,17 @@ interface CardWrapperProps {
 }
 
 function CardWrapper({ children, onClose, visible, title, color }: CardWrapperProps) {
+  if (!visible) return null;
+  
   return (
     <div
       style={{
         position: "absolute",
-        top: "50%",
-        left: "50%",
-        transform: visible ? "translate(-50%, -50%) scaleX(1) scaleY(1)" : "translate(-50%, -50%) scaleX(0) scaleY(0)",
-        width: "360px",
-        maxHeight: "70vh",
+        inset: 0,
         background: "#FFF8F0",
         border: "4px solid #000",
-        boxShadow: "8px 8px 0 #000",
+        boxShadow: "inset 0 0 0 4px #000",
         zIndex: 100,
-        transition: "transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)",
         display: "flex",
         flexDirection: "column",
         overflow: "hidden",
@@ -562,27 +562,27 @@ function CardWrapper({ children, onClose, visible, title, color }: CardWrapperPr
       {/* Header */}
       <div style={{
         background: color,
-        border: "0 0 4px 0",
         borderBottom: "4px solid #000",
-        padding: "10px 12px",
+        padding: "12px 16px",
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
         flexShrink: 0,
       }}>
-        <div style={{ fontSize: "10px", color: "#000", fontWeight: "bold" }}>{title}</div>
+        <div style={{ fontSize: "12px", color: "#000", fontWeight: "bold", fontFamily: "'Press Start 2P', monospace" }}>{title}</div>
         <button
           onClick={onClose}
           style={{
             background: "#FF4444",
-            border: "2px solid #000",
+            border: "3px solid #000",
             color: "#fff",
-            width: "24px", height: "24px",
-            fontSize: "10px",
+            width: "32px", height: "32px",
+            fontSize: "14px",
             cursor: "pointer",
             display: "flex", alignItems: "center", justifyContent: "center",
             fontFamily: "'Press Start 2P', monospace",
-            boxShadow: "2px 2px 0 #000",
+            boxShadow: "3px 3px 0 #000",
+            padding: 0,
           }}
         >
           X
@@ -591,9 +591,11 @@ function CardWrapper({ children, onClose, visible, title, color }: CardWrapperPr
 
       {/* Content */}
       <div style={{
-        padding: "16px",
+        padding: "20px",
         overflowY: "auto",
         flex: 1,
+        fontSize: "12px",
+        lineHeight: "1.6",
       }}>
         {children}
       </div>

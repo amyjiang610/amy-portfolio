@@ -129,7 +129,8 @@ export default function Home() {
               border: "4px solid #000",
               boxShadow: "inset 0 0 20px rgba(0,0,0,0.8), 0 0 0 2px #C87090",
               position: "relative",
-              minHeight: "460px",
+              height: "calc(100vh - 280px)",
+              maxHeight: "600px",
               overflow: "hidden",
             }}>
               {/* Screen inner canvas world */}
