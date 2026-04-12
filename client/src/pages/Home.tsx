@@ -17,7 +17,7 @@ import {
   HobbiesCard,
   ExperienceCard,
   EducationCard,
-  FuturePlanCard,
+  FutureCard,
 } from "@/components/ContentCards";
 
 type CardType = "personality" | "hobbies" | "experience" | "education" | "future" | null;
@@ -308,7 +308,7 @@ export default function Home() {
               <HobbiesCard onClose={() => setActiveCard(null)} visible={activeCard === "hobbies"} />
               <ExperienceCard onClose={() => setActiveCard(null)} visible={activeCard === "experience"} />
               <EducationCard onClose={() => setActiveCard(null)} visible={activeCard === "education"} />
-              <FuturePlanCard onClose={() => setActiveCard(null)} visible={activeCard === "future"} />
+              <FutureCard onClose={() => setActiveCard(null)} visible={activeCard === "future"} />
             </div>
 
             {/* Computer bottom / base */}

@@ -28,7 +28,7 @@ export function PersonalityCard({ onClose, visible }: CardProps) {
   ];
 
   return (
-    <CardWrapper onClose={onClose} visible={visible} title="ENTJ-A 小小温柔指挥官" color="#E8A0BF">
+    <CardWrapper onClose={onClose} visible={visible} title="身份标签" color="#E8A0BF">
       {/* Pixel avatar */}
       <div style={{ display: "flex", justifyContent: "center", marginBottom: "16px" }}>
         <div style={{
@@ -97,22 +97,35 @@ export function PersonalityCard({ onClose, visible }: CardProps) {
         ))}
       </div>
 
-      {/* Quote box */}
-      <div style={{
-        background: "#1a0a2e",
-        border: "4px solid #FFD700",
-        padding: "12px",
-        marginBottom: "12px",
-        position: "relative",
-      }}>
+      {/* Tags */}
+      <div style={{ marginBottom: "16px" }}>
+        <div style={{ fontSize: "10px", color: "#8B0000", marginBottom: "8px", textAlign: "center" }}>
+          — 身份标签 —
+        </div>
         <div style={{
-          position: "absolute", top: "-8px", left: "12px",
-          background: "#FFD700",
-          padding: "2px 8px",
-          fontSize: "8px", color: "#000",
-        }}>ENTJ 说</div>
-        <div style={{ fontSize: "9px", color: "#FFD700", lineHeight: "1.8", textAlign: "center" }}>
-          "ENTJ 的温柔，是为你铺好路，<br/>再退后一步让你走。"
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: "8px",
+        }}>
+          {[
+            "朋友圈一级潜水员",
+            "微信运动霸榜专业户",
+            "无效化妆非遗继承人",
+            "当代赛博AI佃农"
+          ].map(tag => (
+            <div key={tag} style={{
+              background: "#FFB6C1",
+              border: "2px solid #000",
+              padding: "8px",
+              fontSize: "9px",
+              color: "#8B0000",
+              textAlign: "center",
+              fontWeight: "bold",
+              boxShadow: "2px 2px 0 #000",
+            }}>
+              {tag}
+            </div>
+          ))}
         </div>
       </div>
 
@@ -194,28 +207,16 @@ export function ExperienceCard({ onClose, visible }: CardProps) {
       color: "#FF4444",
       items: [
         {
-          period: "2025.06-至今",
-          role: "实习心理测评师",
-          org: "中南大学湘雅二医院",
-          details: ["独立负责39位患者追踪测评", "AI处理5万+数据", "SSCI论文在投"],
-        },
-        {
-          period: "2025.03-2025.06",
-          role: "实习猎头（AI财务方向）",
-          org: "广州cgl",
-          details: ["Mapping 200+企业", "推进终面", "10份人才画像"],
-        },
-        {
-          period: "2024.09-2025.03",
+          period: "2024.11-2025.09",
           role: "兼职心理咨询师",
           org: "华南理工大学电气学院",
-          details: ["主要负责项目统筹、数据分析与答辩汇报"],
+          details: ["为学院大一及研一新生提供专业心理咨询服务", "助力心理健康发展与情绪疏导"],
         },
         {
-          period: "2024.01-2025.03",
-          role: "兼职心理老师",
+          period: "2025.02-2025.09",
+          role: "心理校外导师",
           org: "华南师范大学附属中学",
-          details: ["主要负责项目统筹、数据分析与答辩汇报"],
+          details: ["主要负责高三1-7班考前心理疏导", "心理团辅活动安排"],
         },
       ],
     },
@@ -224,22 +225,22 @@ export function ExperienceCard({ onClose, visible }: CardProps) {
       color: "#2ECC71",
       items: [
         {
-          period: "2024.09-至今",
-          role: "宣传委员",
-          org: "华南师范大学心理学院",
-          details: ["主要负责项目统筹、数据分析与答辩汇报"],
+          period: "2020.09-2022.09",
+          role: "采编组员及采编部长",
+          org: "华南师范大学记者团",
+          details: ["负责校园新闻采编工作", "统筹部门采编事务与内容产出"],
         },
         {
           period: "2022.07-2024.06",
           role: "组织委员",
-          org: "华师心理学院本科生第二党支部",
-          details: ["主要负责项目统筹、数据分析与答辩汇报"],
+          org: "华南师范大学心理学院本科生第二党支部",
+          details: ["主持党组织生活", "统筹三会一课开展以及材料审核等工作"],
         },
         {
-          period: "2020.09-2022.09",
-          role: "采编部部长",
-          org: "华师记者团",
-          details: ["主要负责项目统筹、数据分析与答辩汇报"],
+          period: "2024.09-至今",
+          role: "部级宣传委员",
+          org: "华南师范大学心理学院",
+          details: ["负责学院公众号运营", "讲座活动宣传"],
         },
       ],
     },
@@ -248,16 +249,16 @@ export function ExperienceCard({ onClose, visible }: CardProps) {
       color: "#FFD700",
       items: [
         {
-          period: "2023.09-2024.03",
-          role: "第一负责人",
-          org: '"挑战杯"乡村振兴赛道金奖',
-          details: ["主要负责项目统筹、数据分析与答辩汇报"],
-        },
-        {
           period: "2023.02-2023.09",
           role: "第二负责人",
-          org: '"互联网+"红旅赛道全国金奖',
-          details: ["主要负责项目统筹、数据分析与答辩汇报"],
+          org: '第八届"互联网+"红旅赛道金奖',
+          details: ["主导下乡数据收集、计划书修改、团队统筹及演讲稿撰写", "助力乡村女性电商再就业"],
+        },
+        {
+          period: "2023.09-2024.03",
+          role: "第一负责人",
+          org: '"挑战杯" 乡村振兴赛道校金奖',
+          details: ["统筹教育+帮扶乡村女性电商就业创业项目全流程", "负责项目实施与比赛答辩汇报"],
         },
       ],
     },
@@ -308,15 +309,20 @@ export function ExperienceCard({ onClose, visible }: CardProps) {
                     background: "#FFF8F0",
                     border: "2px solid #000",
                     padding: "8px",
+                    marginLeft: "8px",
                   }}>
-                    <div style={{ fontSize: "8px", color: "#888", marginBottom: "4px" }}>{item.period}</div>
-                    <div style={{ fontSize: "9px", color: "#8B0000", fontWeight: "bold", marginBottom: "2px" }}>
+                    <div style={{ fontSize: "9px", color: section.color, fontWeight: "bold" }}>
+                      {item.period}
+                    </div>
+                    <div style={{ fontSize: "9px", color: "#8B0000", fontWeight: "bold", marginTop: "2px" }}>
                       {item.role}
                     </div>
-                    <div style={{ fontSize: "8px", color: "#4A90E2", marginBottom: "4px" }}>{item.org}</div>
-                    {item.details.map((d, di) => (
-                      <div key={di} style={{ fontSize: "8px", color: "#555", lineHeight: "1.6" }}>
-                        • {d}
+                    <div style={{ fontSize: "8px", color: "#555", marginTop: "2px" }}>
+                      {item.org}
+                    </div>
+                    {item.details.map((detail, di) => (
+                      <div key={di} style={{ fontSize: "8px", color: "#555", marginTop: "2px", marginLeft: "8px" }}>
+                        • {detail}
                       </div>
                     ))}
                   </div>
@@ -326,12 +332,6 @@ export function ExperienceCard({ onClose, visible }: CardProps) {
           </div>
         ))}
       </div>
-      <style>{`
-        @keyframes fadeInUp {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-      `}</style>
     </CardWrapper>
   );
 }
@@ -340,87 +340,61 @@ export function ExperienceCard({ onClose, visible }: CardProps) {
 export function EducationCard({ onClose, visible }: CardProps) {
   const degrees = [
     {
-      level: "硕士",
-      school: "华南师范大学",
-      dept: "心理学院",
-      period: "2024-至今",
-      color: "#9B59B6",
       icon: "🎓",
+      degree: "心理学硕士",
+      school: "华南师范大学",
+      period: "2024.09-至今",
+      color: "#9B59B6",
     },
     {
-      level: "本科",
-      school: "华南师范大学",
-      dept: "心理学",
-      period: "2020-2024",
-      color: "#3498DB",
       icon: "📚",
+      degree: "心理学学士",
+      school: "华南师范大学",
+      period: "2020.09-2024.06",
+      color: "#3498DB",
     },
-  ];
-  const courses = ["心理评估", "认知神经科学", "统计与测量", "机器学习基础（自修）"];
-  const awards = [
-    "校级及研究生高等级奖学金（5次+）",
-    "优秀研究生骨干",
-    "校优秀共青团员（3次+）",
   ];
 
   return (
-    <CardWrapper onClose={onClose} visible={visible} title="教育背景" color="#9B59B6">
-      {/* Degrees */}
-      <div style={{ marginBottom: "16px" }}>
-        {degrees.map(d => (
-          <div key={d.level} style={{
-            display: "flex", alignItems: "center", gap: "12px",
-            padding: "12px",
-            background: "#FFF8F0",
-            border: "3px solid #000",
-            marginBottom: "10px",
-            boxShadow: "4px 4px 0 #000",
-          }}>
+    <CardWrapper onClose={onClose} visible={visible} title="教育背景" color="#FFD700">
+      <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+        {degrees.map((deg, i) => (
+          <div
+            key={i}
+            style={{
+              animation: `fadeInUp 0.4s ease ${i * 0.2}s both`,
+              display: "flex",
+              gap: "12px",
+              alignItems: "center",
+            }}
+          >
+            {/* Pixel badge */}
             <div style={{
-              width: "48px", height: "48px",
-              background: d.color,
-              border: "3px solid #000",
-              display: "flex", alignItems: "center", justifyContent: "center",
+              width: "60px", height: "60px",
+              background: deg.color,
+              border: "4px solid #000",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
               fontSize: "24px",
+              boxShadow: "4px 4px 0 #000",
               flexShrink: 0,
-            }}>{d.icon}</div>
-            <div>
-              <div style={{ fontSize: "10px", color: d.color, fontWeight: "bold" }}>{d.level}</div>
-              <div style={{ fontSize: "9px", color: "#333", marginTop: "4px" }}>{d.school}</div>
-              <div style={{ fontSize: "8px", color: "#555" }}>{d.dept}</div>
-              <div style={{ fontSize: "8px", color: "#888", marginTop: "2px" }}>{d.period}</div>
+            }}>
+              {deg.icon}
             </div>
-          </div>
-        ))}
-      </div>
 
-      {/* Courses */}
-      <div style={{ marginBottom: "16px" }}>
-        <div style={{ fontSize: "10px", color: "#8B0000", marginBottom: "8px" }}>📖 主修课程</div>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
-          {courses.map(c => (
-            <div key={c} style={{
-              background: "#4A90E2",
-              color: "#fff",
-              padding: "4px 8px",
-              fontSize: "8px",
-              border: "2px solid #000",
-              boxShadow: "2px 2px 0 #000",
-            }}>{c}</div>
-          ))}
-        </div>
-      </div>
-
-      {/* Awards */}
-      <div>
-        <div style={{ fontSize: "10px", color: "#8B0000", marginBottom: "8px" }}>🏆 荣誉奖项</div>
-        {awards.map(a => (
-          <div key={a} style={{
-            display: "flex", alignItems: "center", gap: "8px",
-            marginBottom: "6px", fontSize: "8px", color: "#333",
-          }}>
-            <span style={{ color: "#FFD700", fontSize: "12px" }}>★</span>
-            {a}
+            {/* Info */}
+            <div style={{ flex: 1 }}>
+              <div style={{ fontSize: "10px", color: "#8B0000", fontWeight: "bold" }}>
+                {deg.degree}
+              </div>
+              <div style={{ fontSize: "9px", color: "#555", marginTop: "2px" }}>
+                {deg.school}
+              </div>
+              <div style={{ fontSize: "8px", color: "#999", marginTop: "2px" }}>
+                {deg.period}
+              </div>
+            </div>
           </div>
         ))}
       </div>
@@ -429,111 +403,76 @@ export function EducationCard({ onClose, visible }: CardProps) {
 }
 
 // ========== 卡片5：未来计划 ==========
-export function FuturePlanCard({ onClose, visible }: CardProps) {
+export function FutureCard({ onClose, visible }: CardProps) {
   const plans = [
-    {
-      period: "短期（1年内）",
-      color: "#2ECC71",
-      icon: "🌱",
-      desc: "了解人力资源全模块配置，深入业务与一线，成为优秀的 HR",
-    },
-    {
-      period: "中期（2-3年）",
-      color: "#4A90E2",
-      icon: "🚀",
-      desc: "深耕人力资源某一领域，成为心理学+AI+招聘的复合型HR人才",
-    },
-    {
-      period: "长期（5年+）",
-      color: "#FFD700",
-      icon: "🌟",
-      desc: "多年磨一剑，成为人力资源管理某方面的专家",
-    },
+    { icon: "🎯", title: "深化心理学研究", desc: "专注于心理健康干预与积极心理学应用" },
+    { icon: "🚀", title: "探索 AI + 心理学", desc: "研发心理健康 AI 工具，让更多人受益" },
+    { icon: "🌍", title: "推动心理公益", desc: "建立心理咨询志愿服务体系" },
+    { icon: "✨", title: "个人成长", desc: "成为温暖而有力量的心理工作者" },
   ];
 
-  const progress = 35;
-  const totalStars = 10;
-  const filledStars = Math.floor(progress / 10);
-  const halfStar = (progress % 10) >= 5;
+  const progressPercent = 35;
 
   return (
-    <CardWrapper onClose={onClose} visible={visible} title="未来计划" color="#FFD700">
-      {/* Plans */}
-      <div style={{ marginBottom: "20px" }}>
-        {plans.map((p, i) => (
-          <div key={p.period} style={{
-            display: "flex", gap: "12px",
-            marginBottom: "14px",
-            padding: "10px",
-            background: "#FFF8F0",
+    <CardWrapper onClose={onClose} visible={visible} title="未来计划" color="#FF69B4">
+      <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+        {/* Progress bar */}
+        <div style={{ marginBottom: "8px" }}>
+          <div style={{ fontSize: "10px", color: "#8B0000", marginBottom: "4px", textAlign: "center" }}>
+            🌟 2025 年度目标进度 🌟
+          </div>
+          <div style={{
+            width: "100%", height: "16px",
+            background: "#ddd",
             border: "3px solid #000",
-            boxShadow: "3px 3px 0 #000",
-            animation: `fadeInLeft 0.4s ease ${i * 0.15}s both`,
+            position: "relative",
+            overflow: "hidden",
           }}>
             <div style={{
-              width: "40px", height: "40px",
-              background: p.color,
+              width: `${progressPercent}%`,
+              height: "100%",
+              background: "linear-gradient(90deg, #FF69B4, #FFB6C1)",
+              transition: "width 1s ease",
+              imageRendering: "pixelated",
+            }} />
+            <div style={{
+              position: "absolute", right: "4px", top: "0",
+              fontSize: "9px", lineHeight: "16px", color: "#000", fontWeight: "bold",
+            }}>{progressPercent}%</div>
+          </div>
+        </div>
+
+        {/* Plans */}
+        {plans.map((plan, i) => (
+          <div
+            key={i}
+            style={{
+              animation: `fadeInUp 0.4s ease ${i * 0.1}s both`,
+              background: "#FFF0F5",
               border: "2px solid #000",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              fontSize: "20px",
-              flexShrink: 0,
-            }}>{p.icon}</div>
+              padding: "10px",
+              display: "flex",
+              gap: "10px",
+              alignItems: "flex-start",
+            }}
+          >
+            <span style={{ fontSize: "16px", flexShrink: 0 }}>{plan.icon}</span>
             <div>
-              <div style={{ fontSize: "9px", color: p.color, fontWeight: "bold", marginBottom: "4px" }}>
-                {p.period}
+              <div style={{ fontSize: "9px", color: "#8B0000", fontWeight: "bold" }}>
+                {plan.title}
               </div>
-              <div style={{ fontSize: "8px", color: "#333", lineHeight: "1.6" }}>{p.desc}</div>
+              <div style={{ fontSize: "8px", color: "#555", marginTop: "2px" }}>
+                {plan.desc}
+              </div>
             </div>
           </div>
         ))}
       </div>
-
-      {/* Dream progress */}
-      <div style={{
-        background: "#1a0a2e",
-        border: "4px solid #FFD700",
-        padding: "12px",
-      }}>
-        <div style={{ fontSize: "9px", color: "#FFD700", marginBottom: "8px", textAlign: "center" }}>
-          ✨ 梦想进度 {progress}% ✨
-        </div>
-        <div style={{ display: "flex", justifyContent: "center", gap: "4px", marginBottom: "8px" }}>
-          {Array.from({ length: totalStars }).map((_, i) => {
-            if (i < filledStars) return <span key={i} style={{ fontSize: "16px" }}>⭐</span>;
-            if (i === filledStars && halfStar) return <span key={i} style={{ fontSize: "16px", opacity: 0.6 }}>⭐</span>;
-            return <span key={i} style={{ fontSize: "16px", opacity: 0.2 }}>☆</span>;
-          })}
-        </div>
-        <div style={{
-          width: "100%", height: "12px",
-          background: "#333",
-          border: "2px solid #FFD700",
-          position: "relative",
-          overflow: "hidden",
-        }}>
-          <div style={{
-            width: `${progress}%`,
-            height: "100%",
-            background: "linear-gradient(90deg, #FFD700, #FF8C00)",
-            transition: "width 1.5s ease",
-          }} />
-        </div>
-        <div style={{ fontSize: "8px", color: "#888", textAlign: "center", marginTop: "6px" }}>
-          Keep going! 🌟
-        </div>
-      </div>
-
-      <style>{`
-        @keyframes fadeInLeft {
-          from { opacity: 0; transform: translateX(-20px); }
-          to { opacity: 1; transform: translateX(0); }
-        }
-      `}</style>
     </CardWrapper>
   );
 }
 
-// ========== 通用卡片包装器 ==========
+// ========== CardWrapper 组件 ==========
 interface CardWrapperProps {
   children: React.ReactNode;
   onClose: () => void;
@@ -544,61 +483,98 @@ interface CardWrapperProps {
 
 function CardWrapper({ children, onClose, visible, title, color }: CardWrapperProps) {
   if (!visible) return null;
-  
+
   return (
     <div
       style={{
         position: "absolute",
-        inset: 0,
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+        width: "90%",
+        height: "85%",
         background: "#FFF8F0",
-        border: "4px solid #000",
-        boxShadow: "inset 0 0 0 4px #000",
-        zIndex: 100,
+        border: "6px solid #000",
+        boxShadow: "8px 8px 0 #000",
+        zIndex: 1000,
         display: "flex",
         flexDirection: "column",
-        overflow: "hidden",
+        animation: "cardScaleIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)",
       }}
     >
       {/* Header */}
-      <div style={{
-        background: color,
-        borderBottom: "4px solid #000",
-        padding: "12px 16px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        flexShrink: 0,
-      }}>
-        <div style={{ fontSize: "12px", color: "#000", fontWeight: "bold", fontFamily: "'Press Start 2P', monospace" }}>{title}</div>
+      <div
+        style={{
+          background: color,
+          border: `4px solid #000`,
+          borderBottom: "none",
+          padding: "12px",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <div style={{ fontSize: "12px", color: "#000", fontWeight: "bold", fontFamily: "'Press Start 2P', monospace" }}>
+          {title}
+        </div>
         <button
           onClick={onClose}
           style={{
             background: "#FF4444",
             border: "3px solid #000",
             color: "#fff",
-            width: "32px", height: "32px",
             fontSize: "14px",
             cursor: "pointer",
-            display: "flex", alignItems: "center", justifyContent: "center",
-            fontFamily: "'Press Start 2P', monospace",
-            boxShadow: "3px 3px 0 #000",
-            padding: 0,
+            padding: "4px 8px",
+            fontWeight: "bold",
+            boxShadow: "2px 2px 0 #000",
+            transition: "all 0.2s",
+          }}
+          onMouseEnter={e => {
+            e.currentTarget.style.transform = "scale(1.1)";
+          }}
+          onMouseLeave={e => {
+            e.currentTarget.style.transform = "scale(1)";
           }}
         >
-          X
+          ✕
         </button>
       </div>
 
       {/* Content */}
-      <div style={{
-        padding: "20px",
-        overflowY: "auto",
-        flex: 1,
-        fontSize: "12px",
-        lineHeight: "1.6",
-      }}>
+      <div
+        style={{
+          flex: 1,
+          overflow: "auto",
+          padding: "16px",
+          background: "#FFF8F0",
+        }}
+      >
         {children}
       </div>
+
+      <style>{`
+        @keyframes cardScaleIn {
+          from {
+            transform: translate(-50%, -50%) scaleX(0);
+            opacity: 0;
+          }
+          to {
+            transform: translate(-50%, -50%) scaleX(1);
+            opacity: 1;
+          }
+        }
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
     </div>
   );
 }
