@@ -338,65 +338,123 @@ export function ExperienceCard({ onClose, visible }: CardProps) {
 
 // ========== 卡片4：教育背景 ==========
 export function EducationCard({ onClose, visible }: CardProps) {
-  const degrees = [
-    {
-      icon: "🎓",
-      degree: "心理学硕士",
-      school: "华南师范大学",
-      period: "2024.09-至今",
-      color: "#9B59B6",
-    },
-    {
-      icon: "📚",
-      degree: "心理学学士",
-      school: "华南师范大学",
-      period: "2020.09-2024.06",
-      color: "#3498DB",
-    },
-  ];
+  const education = {
+    degrees: [
+      {
+        icon: "🎓",
+        level: "硕士",
+        school: "华南师范大学 心理学院",
+        period: "2024-至今",
+        color: "#9B59B6",
+      },
+      {
+        icon: "📚",
+        level: "本科",
+        school: "华南师范大学 心理学",
+        period: "2020-2024",
+        color: "#3498DB",
+      },
+    ],
+    courses: ["心理评估", "认知神经科学", "统计与测量", "机器学习基础（自修）"],
+    honors: [
+      "校级及研究生高等级奖学金（5次+）",
+      "优秀研究生骨干、校优秀共青团员（3次+）",
+      "广东省'525心理节'最佳剧本奖、摄影奖",
+      "第十五届中国国际大学生'互联网+'创新创业大赛金奖",
+    ],
+  };
 
   return (
     <CardWrapper onClose={onClose} visible={visible} title="教育背景" color="#FFD700">
-      <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-        {degrees.map((deg, i) => (
-          <div
-            key={i}
-            style={{
-              animation: `fadeInUp 0.4s ease ${i * 0.2}s both`,
-              display: "flex",
-              gap: "12px",
-              alignItems: "center",
-            }}
-          >
-            {/* Pixel badge */}
-            <div style={{
-              width: "60px", height: "60px",
-              background: deg.color,
-              border: "4px solid #000",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: "24px",
-              boxShadow: "4px 4px 0 #000",
-              flexShrink: 0,
-            }}>
-              {deg.icon}
-            </div>
-
-            {/* Info */}
-            <div style={{ flex: 1 }}>
-              <div style={{ fontSize: "10px", color: "#8B0000", fontWeight: "bold" }}>
-                {deg.degree}
-              </div>
-              <div style={{ fontSize: "9px", color: "#555", marginTop: "2px" }}>
-                {deg.school}
-              </div>
-              <div style={{ fontSize: "8px", color: "#999", marginTop: "2px" }}>
-                {deg.period}
-              </div>
-            </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+        {/* Degrees */}
+        <div>
+          <div style={{ fontSize: "10px", color: "#8B0000", marginBottom: "8px", fontWeight: "bold" }}>
+            — 学位 —
           </div>
-        ))}
+          {education.degrees.map((deg, i) => (
+            <div
+              key={i}
+              style={{
+                animation: `fadeInUp 0.4s ease ${i * 0.1}s both`,
+                display: "flex",
+                gap: "10px",
+                alignItems: "flex-start",
+                marginBottom: "8px",
+              }}
+            >
+              <div style={{
+                width: "40px", height: "40px",
+                background: deg.color,
+                border: "3px solid #000",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: "18px",
+                boxShadow: "2px 2px 0 #000",
+                flexShrink: 0,
+              }}>
+                {deg.icon}
+              </div>
+              <div style={{ flex: 1 }}>
+                <div style={{ fontSize: "9px", color: "#8B0000", fontWeight: "bold" }}>
+                  {deg.level}
+                </div>
+                <div style={{ fontSize: "8px", color: "#555", marginTop: "1px" }}>
+                  {deg.school}
+                </div>
+                <div style={{ fontSize: "8px", color: "#999", marginTop: "1px" }}>
+                  {deg.period}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Courses */}
+        <div>
+          <div style={{ fontSize: "10px", color: "#8B0000", marginBottom: "6px", fontWeight: "bold" }}>
+            — 主修课程 —
+          </div>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+            {education.courses.map((course, i) => (
+              <div
+                key={i}
+                style={{
+                  fontSize: "8px",
+                  background: "#FFF0F5",
+                  border: "2px solid #000",
+                  padding: "4px 8px",
+                  boxShadow: "2px 2px 0 #000",
+                }}
+              >
+                {course}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Honors */}
+        <div>
+          <div style={{ fontSize: "10px", color: "#8B0000", marginBottom: "6px", fontWeight: "bold" }}>
+            — 荣誉奖项 —
+          </div>
+          {education.honors.map((honor, i) => (
+            <div
+              key={i}
+              style={{
+                fontSize: "8px",
+                background: "#FFF0F5",
+                border: "2px solid #000",
+                padding: "6px",
+                marginBottom: "4px",
+                boxShadow: "2px 2px 0 #000",
+              }}
+            >
+              ✨ {honor}
+            </div>
+          ))}
+        </div>
       </div>
     </CardWrapper>
   );
@@ -404,65 +462,82 @@ export function EducationCard({ onClose, visible }: CardProps) {
 
 // ========== 卡片5：未来计划 ==========
 export function FutureCard({ onClose, visible }: CardProps) {
-  const plans = [
-    { icon: "🎯", title: "深化心理学研究", desc: "专注于心理健康干预与积极心理学应用" },
-    { icon: "🚀", title: "探索 AI + 心理学", desc: "研发心理健康 AI 工具，让更多人受益" },
-    { icon: "🌍", title: "推动心理公益", desc: "建立心理咨询志愿服务体系" },
-    { icon: "✨", title: "个人成长", desc: "成为温暖而有力量的心理工作者" },
+  const goals = [
+    {
+      period: "短期（1年内）",
+      icon: "🎯",
+      goal: "了解人力资源全模块配置，深入业务与一线，成为优秀的 HR",
+    },
+    {
+      period: "中期（2-3年）",
+      icon: "🚀",
+      goal: "深耕人力资源某一领域，成为心理学+AI+招聘的复合型HR人才",
+    },
+    {
+      period: "长期（5年+）",
+      icon: "🌟",
+      goal: "多年磨一剑，成为人力资源管理某方面的专家",
+    },
   ];
 
   const progressPercent = 35;
+  const totalStars = 10;
+  const filledStars = 3;
+  const halfStar = true;
 
   return (
     <CardWrapper onClose={onClose} visible={visible} title="未来计划" color="#FF69B4">
-      <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-        {/* Progress bar */}
+      <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+        {/* Star progress bar */}
         <div style={{ marginBottom: "8px" }}>
-          <div style={{ fontSize: "10px", color: "#8B0000", marginBottom: "4px", textAlign: "center" }}>
-            🌟 2025 年度目标进度 🌟
+          <div style={{ fontSize: "10px", color: "#8B0000", marginBottom: "6px", textAlign: "center", fontWeight: "bold" }}>
+            梦想进度 {progressPercent}%
           </div>
-          <div style={{
-            width: "100%", height: "16px",
-            background: "#ddd",
-            border: "3px solid #000",
-            position: "relative",
-            overflow: "hidden",
-          }}>
-            <div style={{
-              width: `${progressPercent}%`,
-              height: "100%",
-              background: "linear-gradient(90deg, #FF69B4, #FFB6C1)",
-              transition: "width 1s ease",
-              imageRendering: "pixelated",
-            }} />
-            <div style={{
-              position: "absolute", right: "4px", top: "0",
-              fontSize: "9px", lineHeight: "16px", color: "#000", fontWeight: "bold",
-            }}>{progressPercent}%</div>
+          <div style={{ display: "flex", justifyContent: "center", gap: "4px", marginBottom: "8px" }}>
+            {Array.from({ length: totalStars }).map((_, i) => {
+              let star = "☆";
+              if (i < filledStars) {
+                star = "★";
+              } else if (i === filledStars && halfStar) {
+                star = "⭐";
+              }
+              return (
+                <span
+                  key={i}
+                  style={{
+                    fontSize: "16px",
+                    color: i < filledStars ? "#FFD700" : (i === filledStars && halfStar ? "#FFD700" : "#DDD"),
+                    textShadow: "2px 2px 0 #000",
+                  }}
+                >
+                  {star}
+                </span>
+              );
+            })}
           </div>
         </div>
 
-        {/* Plans */}
-        {plans.map((plan, i) => (
+        {/* Goals */}
+        {goals.map((goal, i) => (
           <div
             key={i}
             style={{
               animation: `fadeInUp 0.4s ease ${i * 0.1}s both`,
               background: "#FFF0F5",
               border: "2px solid #000",
-              padding: "10px",
-              display: "flex",
-              gap: "10px",
-              alignItems: "flex-start",
+              padding: "8px",
+              boxShadow: "2px 2px 0 #000",
             }}
           >
-            <span style={{ fontSize: "16px", flexShrink: 0 }}>{plan.icon}</span>
-            <div>
-              <div style={{ fontSize: "9px", color: "#8B0000", fontWeight: "bold" }}>
-                {plan.title}
-              </div>
-              <div style={{ fontSize: "8px", color: "#555", marginTop: "2px" }}>
-                {plan.desc}
+            <div style={{ display: "flex", gap: "8px", alignItems: "flex-start" }}>
+              <span style={{ fontSize: "14px", flexShrink: 0 }}>{goal.icon}</span>
+              <div style={{ flex: 1 }}>
+                <div style={{ fontSize: "9px", color: "#8B0000", fontWeight: "bold" }}>
+                  {goal.period}
+                </div>
+                <div style={{ fontSize: "8px", color: "#555", marginTop: "2px", lineHeight: "1.3" }}>
+                  {goal.goal}
+                </div>
               </div>
             </div>
           </div>
